@@ -7,4 +7,4 @@
 # change backuppc htaccess password in Dockerfile line 19
 * cd into the directory
 * run ```docker build```
-* run the image ```docker -d -P -v /<your-backup-folder>:/var/lib/backuppc <image-id>```
+* run the image ```docker run -d -P -v /<your-backup-folder>:/var/lib/backuppc <image-id>```
