@@ -22,7 +22,7 @@ COPY supervisord.conf /etc/supervisord.conf
 COPY msmtprc /var/lib/backuppc/.msmtprc
 COPY run.sh /run.sh
 
-RUN sed -i 's/\/usr\/sbin\/sendmail/\/usr\/bin\/msmtp/g'
+RUN sed -i 's/\/usr\/sbin\/sendmail/\/usr\/bin\/msmtp/g' /etc/backuppc/config.pl
 
 RUN chmod 0755 /run.sh
 
