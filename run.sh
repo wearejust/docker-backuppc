@@ -9,4 +9,5 @@ then
 	echo 1 > /firstrun
 fi
 
-/usr/local/bin/supervisord -c /etc/supervisord.conf
+exec /usr/local/bin/supervisord -c /etc/supervisord.conf
+
