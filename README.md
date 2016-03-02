@@ -4,7 +4,8 @@
 
 # How to use
 ## Configure Mail
-* change the smtp host in msmtprc
+* You can use environment variables MAILHOST and FROM to set the target
+mail relay host and mail "from" address, respectively.
 
 ## Configure user credentials
 * change backuppc htaccess password in Dockerfile line 19 (or you may
@@ -25,5 +26,7 @@ This image declares /var/lib/backuppc and /etc/backuppc as volumes.
 You SHOULD map /var/lib/backuppc to a host volume (this will contain
 your backups).  You MAY map /etc/backuppc to a location to preserve
 configuration if you re-create your docker container.
+
+
 
 
