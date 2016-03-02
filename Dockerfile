@@ -19,12 +19,15 @@ RUN apt-get install -y backuppc apache2-utils
 RUN htpasswd -b /etc/backuppc/htpasswd backuppc password
 
 COPY supervisord.conf /etc/supervisord.conf
-COPY msmtprc /var/lib/backuppc/.msmtprc
+COPY msmtprc /var/lib/backuppc/.msmtprc.dist
 COPY run.sh /run.sh
 
 RUN sed -i 's/\/usr\/sbin\/sendmail/\/usr\/bin\/msmtp/g' /etc/backuppc/config.pl
 
 RUN chmod 0755 /run.sh
+
+ENV MAILHOST mail
+ENV FROM backuppc
 
 EXPOSE 80
 
