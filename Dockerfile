@@ -21,6 +21,7 @@ RUN htpasswd -b /etc/backuppc/htpasswd backuppc password
 COPY supervisord.conf /etc/supervisord.conf
 COPY msmtprc /var/lib/backuppc/.msmtprc
 COPY run.sh /run.sh
+COPY ssh-config /etc/backuppc-ssh-config
 
 RUN sed -i 's/\/usr\/sbin\/sendmail/\/usr\/bin\/msmtp/g' /etc/backuppc/config.pl
 
