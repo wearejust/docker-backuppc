@@ -26,6 +26,9 @@ RUN sed -i 's/\/usr\/sbin\/sendmail/\/usr\/bin\/msmtp/g' /etc/backuppc/config.pl
 
 RUN chmod 0755 /run.sh
 
+RUN tar -zf /root/etc-backuppc.tgz -C /etc/backuppc -c .
+
 EXPOSE 80
+VOLUME ["/etc/backuppc"]
 
 CMD ["/run.sh"]
