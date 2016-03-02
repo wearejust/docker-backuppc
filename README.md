@@ -4,7 +4,10 @@
 
 # How to use
 * change the smtp host in msmtprc
-# change backuppc htaccess password in Dockerfile line 19
+* change backuppc htaccess password in Dockerfile line 19
 * cd into the directory
 * run ```docker build```
 * run the image ```docker run -d -P -v /<your-backup-folder>:/var/lib/backuppc <image-id>```
+
+If you use ```rsync``` based backup, an SSH key is generated for you.
+You can configure any backup target to accept this key
