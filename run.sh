@@ -33,11 +33,9 @@ if [ ! -e /var/lib/backuppc/.ssh/id_rsa ] ; then
     echo 
 fi
 
-# Ensure that the mail host is configured properly from the
-# environment variables.  Do this each time to allow mail
-# configuration to change by simply recreating the container.
-
 sed -e "s/MAILHOST/$MAILHOST/g" -e "s/FROM/$FROM/g" /var/lib/backuppc/.msmtprc.dist > /var/lib/backuppc/.msmtprc
 
 exec /usr/local/bin/supervisord -c /etc/supervisord.conf
 
+ln -sf /usr/local/just/apache/vhost.conf /etc/apache2/sites-enabled/vhost.conf
+/etc/init.d/apache2 restart

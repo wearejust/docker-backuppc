@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-MAINTAINER ktwe
+MAINTAINER wearejust
 
 VOLUME ["/var/lib/backuppc"]
 
@@ -24,6 +24,10 @@ COPY run.sh /run.sh
 COPY ssh-config /etc/backuppc-ssh-config
 
 RUN sed -i 's/\/usr\/sbin\/sendmail/\/usr\/bin\/msmtp/g' /etc/backuppc/config.pl
+RUN sed -i "s/'\/backuppc\/image/'\/image/g" /etc/backuppc/config.pl
+
+RUN a2enmod ssl
+RUN rm -rf /etc/apache2/sites-enabled/*
 
 RUN chmod 0755 /run.sh
 
@@ -32,7 +36,7 @@ RUN tar -zf /root/etc-backuppc.tgz -C /etc/backuppc -c .
 ENV MAILHOST mail
 ENV FROM backuppc
 
-EXPOSE 80
+EXPOSE 443
 VOLUME ["/etc/backuppc"]
 
 CMD ["/run.sh"]
