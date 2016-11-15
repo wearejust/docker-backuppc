@@ -5,7 +5,7 @@ MAINTAINER wearejust
 VOLUME ["/var/lib/backuppc"]
 
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y python python-pip debconf-utils msmtp
+RUN apt-get install -y python python-pip debconf-utils msmtp sshpass
 
 RUN pip install supervisor
 
